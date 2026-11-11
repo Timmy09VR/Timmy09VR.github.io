@@ -4,15 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIXORA | Digital Gaming Marketplace</title>
+  <title>PIXORA | Digital Marketplace</title>
+
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f5f7fc;
       color: #202b48;
     }
+
     header {
       background: white;
       padding: 20px 7%;
@@ -21,20 +24,25 @@
       align-items: center;
       box-shadow: 0 2px 12px #0000000c;
     }
+
     .logo { font-size: 27px; font-weight: 900; }
+
     nav a {
       margin-left: 18px;
       color: #34415f;
       text-decoration: none;
       font-size: 14px;
     }
+
     .hero {
       text-align: center;
       padding: 85px 20px;
       background: linear-gradient(135deg,#e2edff,#f4f7ff);
     }
+
     .hero h1 { font-size: 46px; margin: 0 0 15px; }
     .hero p { color: #65718a; font-size: 17px; }
+
     .button {
       display: inline-block;
       background: #263b69;
@@ -43,29 +51,107 @@
       border-radius: 9px;
       text-decoration: none;
       margin-top: 15px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
     }
+
     .products { padding: 45px 7%; }
     .products h2 { font-size: 29px; }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
       gap: 22px;
     }
+
     .card {
       background: white;
       padding: 24px;
       border-radius: 15px;
       box-shadow: 0 3px 15px #00000009;
     }
+
     .card h3 { margin-top: 0; }
     .tag { color: #6681b5; font-size: 13px; }
+
+    .reviews {
+      margin-top: 35px;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px #00000009;
+    }
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .big-rating {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .stars {
+      color: #f5ad24;
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
+
+    .review-form {
+      background: #f5f7fc;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #d8deeb;
+      border-radius: 8px;
+      font: inherit;
+      background: white;
+      color: #202b48;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .review-item {
+      border-top: 1px solid #e8ebf2;
+      padding: 18px 0;
+    }
+
+    .review-item h4 { margin: 0 0 7px; }
+    .review-date { color: #8993a7; font-size: 12px; }
+    .review-text { line-height: 1.5; }
+
+    .empty {
+      color: #78839a;
+      padding: 15px 0;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
       color: #78839a;
     }
+
+    @media(max-width:600px) {
+      .hero h1 { font-size: 34px; }
+      header { padding: 18px 5%; }
+      nav a { margin-left: 9px; font-size: 12px; }
+    }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -79,11 +165,9 @@
 
 <section class="hero" id="home">
   <h1>Welcome to PIXORA.</h1>
-  <p>Your destination for digital gaming creations.</p>
+  <p>Your destination for digital creations.</p>
   <a href="#products" class="button">Explore Products</a>
 </section>
-
-
 
 <section class="products" id="products">
   <h2>Featured Products</h2>
@@ -113,18 +197,182 @@
       </a>
     </div>
   </div>
-</section>
 
+  <!-- CUSTOMER REVIEWS -->
+
+  <div class="reviews" id="reviews">
+    <h2>Customer Reviews</h2>
+
+    <div class="rating-summary">
+      <div class="big-rating" id="average">0.0</div>
+      <div>
+        <div class="stars" id="averageStars">☆☆☆☆☆</div>
+        <div id="reviewCount">No reviews yet</div>
+      </div>
+    </div>
+
+    <h3>Leave a Review</h3>
+
+    <div class="review-form">
+      <form id="reviewForm">
+
+        <label for="reviewName">Your name</label>
+        <input
+          id="reviewName"
+          type="text"
+          maxlength="30"
+          placeholder="Enter your name"
+        >
+
+        <label for="reviewRating">Your rating</label>
+        <select id="reviewRating" required>
+          <option value="5">★★★★★ - Excellent</option>
+          <option value="4">★★★★☆ - Great</option>
+          <option value="3">★★★☆☆ - Good</option>
+          <option value="2">★★☆☆☆ - Okay</option>
+          <option value="1">★☆☆☆☆ - Poor</option>
+        </select>
+
+        <label for="reviewText">Your review</label>
+        <textarea
+          id="reviewText"
+          maxlength="500"
+          placeholder="What did you think of this product?"
+          required
+        ></textarea>
+
+        <button type="submit" class="button">
+          Submit Review
+        </button>
+
+      </form>
+    </div>
+
+    <h3>What People Think</h3>
+    <div id="reviewList">
+      <p class="empty">No reviews yet. Be the first to leave one!</p>
+    </div>
+
+  </div>
+</section>
 
 <section class="products" id="about">
   <h2>About PIXORA</h2>
-  <p>PIXORA is a digital marketplace for gaming downloads,
-  mods, creative builds, and more.</p>
+  <p>
+    PIXORA is a digital marketplace for gaming downloads,
+    artwork, creative builds, templates, and more.
+  </p>
 </section>
 
 <footer>
   © 2026 PIXORA. All rights reserved.
 </footer>
+
+<script>
+  const form = document.getElementById("reviewForm");
+  const reviewList = document.getElementById("reviewList");
+
+  // Demo storage: reviews stay in this browser.
+  let reviews = JSON.parse(
+    localStorage.getItem("pixora_black_imposter_reviews") || "[]"
+  );
+
+  function displayReviews() {
+    reviewList.replaceChildren();
+
+    if (reviews.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent = "No reviews yet. Be the first to leave one!";
+      reviewList.appendChild(empty);
+    }
+
+    let total = 0;
+
+    reviews.forEach(review => {
+      total += review.rating;
+
+      const item = document.createElement("div");
+      item.className = "review-item";
+
+      const name = document.createElement("h4");
+      name.textContent = review.name;
+
+      const stars = document.createElement("div");
+      stars.className = "stars";
+      stars.textContent =
+        "★".repeat(review.rating) +
+        "☆".repeat(5 - review.rating);
+
+      const date = document.createElement("div");
+      date.className = "review-date";
+      date.textContent = review.date;
+
+      const content = document.createElement("p");
+      content.className = "review-text";
+      content.textContent = review.text;
+
+      item.append(name, stars, date, content);
+      reviewList.appendChild(item);
+    });
+
+    const average = reviews.length
+      ? total / reviews.length
+      : 0;
+
+    document.getElementById("average").textContent =
+      average.toFixed(1);
+
+    document.getElementById("averageStars").textContent =
+      "★".repeat(Math.round(average)) +
+      "☆".repeat(5 - Math.round(average));
+
+    document.getElementById("reviewCount").textContent =
+      reviews.length === 1
+        ? "1 review"
+        : reviews.length + " reviews";
+  }
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name =
+      document.getElementById("reviewName").value.trim() ||
+      "Anonymous";
+
+    const rating = Number(
+      document.getElementById("reviewRating").value
+    );
+
+    const reviewText =
+      document.getElementById("reviewText").value.trim();
+
+    if (!reviewText) return;
+
+    reviews.unshift({
+      name: name,
+      rating: rating,
+      text: reviewText,
+      date: new Date().toLocaleDateString()
+    });
+
+    try {
+      localStorage.setItem(
+        "pixora_black_imposter_reviews",
+        JSON.stringify(reviews)
+      );
+    } catch (error) {
+      reviews.shift();
+      alert("Could not save the review in this browser.");
+      return;
+    }
+
+    form.reset();
+    displayReviews();
+  });
+
+  displayReviews();
+</script>
 
 </body>
 </html>
